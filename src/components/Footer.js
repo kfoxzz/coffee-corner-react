@@ -4,7 +4,7 @@ import Subscribe from './Subscribe';
 
 function Footer() {
     return (
-        <footer className="footer mt-auto py-3 fixed-bottom">
+        <footer className="footer mt-auto py-3">
             <Subscribe />
             <Container>
                 <Row>
