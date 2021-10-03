@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fontsource/farro';
 import '@fontsource/raleway';
+import '@fortawesome/fontawesome-free';
 import App from './App';
 
 
