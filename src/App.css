@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+body {
+    font-family: 'Raleway', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.jumbotron {
+    color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h6 {
+    font-style: italic;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h2 {
+    font-weight: 400;
+    font-family: 'Farro', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+header h2 {
+    color: #CADE87;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-btn {
+    font-family: 'Farro', sans-serif;
+    font-size: smaller;
+}
+
+.navbar {
+    font-family: 'Farro', sans-serif;
+    background-color: white;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}
+
+footer {
+    font-family: 'Raleway', sans-serif;
+    background-image: linear-gradient(white, gray);
+    color: white;
+}
+
+.menu {
+    font-family: 'Farro', serif;
+}
+
+.menu .menu-text {
+    font-family: 'Raleway', sans-serif;
+}
+
+.card-header {
+    background-color: #CADE87;
+    color: white;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0);
+}
+
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+.zoom {
+  transition: transform 1s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.box-shadow {
+    box-shadow: 0 0 10px gray;
+}
+
+.btn-tan {
+    background-color: #DEB887;
+}
+
+.bg-beige {
+    background-color: #FAF5EE;
+}
+
+.product {
+    display: none;
+}
+
+.green-bg {
+    background-color: #CADE87;
+}
+
+.btn-secondary {
+    background-color: #5a5454;
+}
+
+.dark-gradient {
+      background: #5a5454; 
+      background: -moz-linear-gradient(to bottom,  #5a5454 0%,#333333 100%); 
+      background: -webkit-linear-gradient(to bottom,  #5a5454 0%,#333333 100%); 
+      background: linear-gradient(to bottom,  #5a5454 0%,#333333 100%);
 }
