@@ -34,12 +34,12 @@ function Header() {
                                 </Animated>
                             </Col>
                         <Col className="col-auto text-light text-end align-self-center">
-                            <a onClick={handleShow}><i className="fa fa-user-circle fa-2x text-light"></i></a>
+                            <a href="#" onClick={handleShow}><i className="fa fa-user-circle fa-2x text-light"></i></a>
                             <a href="#"><i className="fa fa-shopping-cart fa-2x text-light"></i></a>
                             <div className="d-none d-md-block text-bottom">
                                 contact@kristiscoffeecorner.co
                                 <br />
-                                +1-555-234-1029
+                                (555) 234-1029
                             </div>
                         </Col>
                     </Row>

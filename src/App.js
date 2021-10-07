@@ -4,13 +4,17 @@ import Header from './components/Header';
 import Navigation from './components/Nav';
 import Home from './components/Home';
 import Footer from './components/Footer';
+import About from './components/About';
+import Menu from './components/Menu';
+import Locations from './components/Locations';
+import Contact from './components/Contact';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Navigation />
-      <Home />
+      <Contact />
       <Footer />
     </div>
   );
