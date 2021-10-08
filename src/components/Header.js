@@ -2,17 +2,28 @@ import React, { useState } from 'react';
 import LoginModal from './modals/LoginModal';
 import { Container, Row, Col, Jumbotron, Image } from 'react-bootstrap';
 import { Animated } from "react-animated-css";
+import CartModal from './modals/CartModal';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-function Header() {
+function Header(props) {
 
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showCartModal, setShowCartModal] = useState(false);
 
-    function handleClose() {
+    function handleLoginClose() {
         setShowLoginModal(false);
     }
 
-    function handleShow() {
+    function handleLoginShow() {
         setShowLoginModal(true);
+    }
+
+    function handleCartClose() {
+        setShowCartModal(false);
+    }
+
+    function handleCartShow() {
+        setShowCartModal(true);
     }
 
     return (
@@ -34,8 +45,8 @@ function Header() {
                                 </Animated>
                             </Col>
                         <Col className="col-auto text-light text-end align-self-center">
-                            <a href="#" onClick={handleShow}><i className="fa fa-user-circle fa-2x text-light"></i></a>
-                            <a href="#"><i className="fa fa-shopping-cart fa-2x text-light"></i></a>
+                            <a href="#" onClick={handleLoginShow}><i className="fa fa-user-circle fa-2x text-light"></i></a>
+                            <a href="#" onClick={handleCartShow}><i className="fa fa-shopping-cart fa-2x text-light"></i></a>
                             <div className="d-none d-md-block text-bottom">
                                 contact@kristiscoffeecorner.co
                                 <br />
@@ -45,7 +56,8 @@ function Header() {
                     </Row>
                 </Container>
             </Jumbotron>
-            <LoginModal show={showLoginModal} close={handleClose}/>
+            <LoginModal show={showLoginModal} close={handleLoginClose}/>
+            <CartModal show={showCartModal} close={handleCartClose} cart={props.cart} updateCart={props.updateCart}/>
         </header>
     )
 }

@@ -6,7 +6,7 @@ function Home() {
 
     function renderBanners() {
         return BANNERS.map(banner => (
-            <>
+            <div key={banner.id}>
                 <Row className="align-items-center py-4">
                     <Col sm={12} md={8} className="zoom">
                         <Image fluid className="box-shadow" src={banner.image} alt={banner.imageAlt} />
@@ -22,7 +22,7 @@ function Home() {
                     </Col>
                 </Row>
                 <hr></hr>
-            </>
+            </div>
         ))
     }
 

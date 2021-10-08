@@ -2,7 +2,34 @@ import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { ITEMS } from './store';
 
-function Shop() {
+function Shop(props) {
+
+    function addToStorage(priceId, quantity) {
+        window.localStorage.setItem(priceId, quantity)
+    }
+
+    function getFromStorage(priceId) {
+        return window.localStorage.getItem(priceId)
+    }
+
+    function addItemToStorage(priceId, quantity) {
+        if (getFromStorage(priceId)) {
+            const newQuantity = parseInt(quantity) + parseInt(getFromStorage(priceId))
+            addToStorage(priceId, newQuantity);
+        } else {
+            addToStorage(priceId, quantity);
+        }
+    }
+
+    function addToCart(priceId, itemCode) {
+        const quantity = document.getElementById(itemCode).value;
+        if (quantity === "Quantity") {
+            alert('Select a quantity to add to cart.');
+        } else {
+            addItemToStorage(priceId, quantity)
+        }
+        props.updateCart();
+    }
 
     function renderItems() {
         return ITEMS.map(item => (
@@ -24,7 +51,7 @@ function Shop() {
                                 </select>
                             </Col>
                             <Col>
-                                <Button href="#" className="border-0 green-bg">Add to cart</Button>
+                                <Button href="#" className="border-0 green-bg" onClick={() => {addToCart(item.priceId, item.itemCode)}}>Add to cart</Button>
                             </Col>
                         </Row>
                     </Card.Body>

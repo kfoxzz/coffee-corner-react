@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Navigation from './components/Nav';
@@ -17,11 +17,31 @@ import {
 } from "react-router-dom";
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  function updateCart () {
+    let cartArray = [];
+    let keys = Object.keys(localStorage);
+    for (let key of keys) {
+      const quantity = localStorage.getItem(key);
+      cartArray.push({
+        price: key,
+        quantity: quantity
+      });
+    }
+    setCart(cartArray);
+  }
+
+  useEffect(() => {
+    updateCart()
+  }, [])
+
   return (
-    <div className="App" class="d-flex flex-column min-vh-100">
+    <div className="App d-flex flex-column min-vh-100">
       <Router>
         <div className="flex-grow-1">
-            <Header />
+            <Header cart={cart} updateCart={updateCart}/>
             <Navigation />
 
             <Switch>
@@ -38,7 +58,7 @@ function App() {
                 <Memberships />
               </Route>
               <Route path="/shop">
-                <Shop />
+                <Shop updateCart={updateCart} />
               </Route>
               <Route path="/locations">
                 <Locations />
