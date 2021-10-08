@@ -103,3 +103,8 @@ footer {
       background: -webkit-linear-gradient(to bottom,  #5a5454 0%,#333333 100%); 
       background: linear-gradient(to bottom,  #5a5454 0%,#333333 100%);
 }
+
+.link-unstyled, .link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
+}

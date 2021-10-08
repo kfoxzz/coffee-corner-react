@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Col, Row, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Subscribe from './Subscribe';
 
 function Footer() {
@@ -10,9 +11,9 @@ function Footer() {
                 <Row>
                     <Col>
                         <ListGroup variant="flush" className="text-center">
-                            <a className="no-underline link-light" href="index.html">Home</a>
-                            <a className="no-underline link-light" href="about.html">About</a>
-                            <a className="no-underline link-light" href="contact.html">Contact</a>
+                            <Link className="link-unstyled link-light" to="/home">Home</Link>
+                            <Link className="link-unstyled link-light" to="/about">About</Link>
+                            <Link className="link-unstyled link-light" to="/contact">Contact</Link>
                         </ListGroup>
                     </Col>
                     <Col className="text-center">
