@@ -362,3 +362,27 @@ export const MAP_STYLES = [
         ]
     }
 ]
+
+export const MEMBERSHIPS = [
+    {
+        id: 0,
+        name: 'Member',
+        price: 'Free!',
+        description1: 'Earn 1 point for every dollar you spend.',
+        description2: 'PLUS, get one (1) free medium coffee every month.'
+    },
+    {
+        id: 1,
+        name: 'Silver Member',
+        price: '$10/month',
+        description1: 'Earn 1 point for every dollar you spend.',
+        description2: 'PLUS, get one (1) free medium coffee every week.'
+    },
+    {
+        id: 2,
+        name: 'Gold Member',
+        price: '$30/month',
+        description1: 'Earn 2 points for every dollar you spend.',
+        description2: 'PLUS, get one (1) free medium coffee every day.'
+    }
+]

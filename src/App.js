@@ -8,13 +8,14 @@ import About from './components/About';
 import Menu from './components/Menu';
 import Locations from './components/Locations';
 import Contact from './components/Contact';
+import Memberships from './components/Memberships';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Navigation />
-      <Contact />
+      <Memberships />
       <Footer />
     </div>
   );
