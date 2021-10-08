@@ -9,13 +9,14 @@ import Menu from './components/Menu';
 import Locations from './components/Locations';
 import Contact from './components/Contact';
 import Memberships from './components/Memberships';
+import Shop from './components/Shop';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Navigation />
-      <Memberships />
+      <Shop />
       <Footer />
     </div>
   );

@@ -386,3 +386,48 @@ export const MEMBERSHIPS = [
         description2: 'PLUS, get one (1) free medium coffee every day.'
     }
 ]
+
+export const ITEMS = [
+    {
+        id: 0,
+        name: 'Large Bag - Dark Roast Coffee Beans',
+        price: '$25.00',
+        itemCode: 'darkLg',
+        priceId: 'price_1JYwgyAOdPwZgIGSA3AQ8doc'
+    },
+    {
+        id: 1,
+        name: 'Small Bag - Dark Roast Coffee Beans',
+        price: '$15.00',
+        itemCode: 'darkSm',
+        priceId: 'price_1JYxqLAOdPwZgIGSem4REW63'
+    },
+    {
+        id: 2,
+        name: 'Large Bag - Light Roast Coffee Beans',
+        price: '$25.00',
+        itemCode: 'lightLg',
+        priceId: 'price_1JYxrmAOdPwZgIGS5ifyTpdO'
+    },
+    {
+        id: 3,
+        name: 'Small Bag - Light Roast Coffee Beans',
+        price: '$15.00',
+        itemCode: 'lightSm',
+        priceId: 'price_1JYxsGAOdPwZgIGSgGklx3SR'
+    },
+    {
+        id: 4,
+        name: 'Large Bag - Espresso Beans',
+        price: '$30.00',
+        itemCode: 'espressoLg',
+        priceId: 'price_1JYxskAOdPwZgIGSr7Zoc0KA'
+    },
+    {
+        id: 5,
+        name: 'Small Bag - Espresso Beans',
+        price: '$20.00',
+        itemCode: 'espressoSm',
+        priceId: 'price_1JYxt9AOdPwZgIGSP3N9y9ru'
+    }
+]
