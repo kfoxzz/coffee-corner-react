@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-function Success() {
+function Success(props) {
+
+      useEffect(() => {
+        window.localStorage.clear();
+        props.updateCart();
+      }, []);
+
     return (
         <Container>
             <Row className="py-3">

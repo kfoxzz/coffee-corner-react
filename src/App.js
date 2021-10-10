@@ -66,7 +66,7 @@ function App() {
               <Contact />
             </Route>
             <Route path="/success">
-              <Success />
+              <Success updateCart={updateCart} />
             </Route>
             <Route path="/cancel">
               <Cancel />
