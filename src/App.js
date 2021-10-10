@@ -10,6 +10,8 @@ import Locations from './components/Locations';
 import Contact from './components/Contact';
 import Memberships from './components/Memberships';
 import Shop from './components/Shop';
+import Success from './components/Success';
+import Cancel from './components/Cancel';
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,35 +43,41 @@ function App() {
     <div className="App d-flex flex-column min-vh-100">
       <Router>
         <div className="flex-grow-1">
-            <Header cart={cart} updateCart={updateCart}/>
-            <Navigation />
+          <Header cart={cart} updateCart={updateCart} />
+          <Navigation />
 
-            <Switch>
-              <Route path="/home">
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/menu">
-                <Menu />
-              </Route>
-              <Route path="/memberships">
-                <Memberships />
-              </Route>
-              <Route path="/shop">
-                <Shop updateCart={updateCart} />
-              </Route>
-              <Route path="/locations">
-                <Locations />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/menu">
+              <Menu />
+            </Route>
+            <Route path="/memberships">
+              <Memberships />
+            </Route>
+            <Route path="/shop">
+              <Shop updateCart={updateCart} />
+            </Route>
+            <Route path="/locations">
+              <Locations />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/success">
+              <Success />
+            </Route>
+            <Route path="/cancel">
+              <Cancel />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
 
-          <Footer />
+        <Footer />
       </Router>
     </div>
   );

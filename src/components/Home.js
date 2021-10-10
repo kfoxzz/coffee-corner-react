@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Row, Col, Card, Image, Button } from 'react-bootstrap';
 import { BANNERS } from './store';
 

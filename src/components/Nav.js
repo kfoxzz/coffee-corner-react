@@ -10,7 +10,7 @@ function Navigation() {
                     <Navbar.Toggle aria-controls="coffeeCornerNavbar" />
                     <Navbar.Collapse id="coffeeCornerNavbar">
                         <Nav className="text-dark">
-                            <Nav.Link as={Link} to="/home" className="zoom link-unstyled">HOME</Nav.Link>
+                            <Nav.Link as={Link} to="/" className="zoom link-unstyled">HOME</Nav.Link>
                             <Nav.Link as={Link} to="/about" className="zoom link-unstyled">ABOUT</Nav.Link>
                             <Nav.Link as={Link} to="/menu" className="zoom link-unstyled">MENU</Nav.Link>
                             <Nav.Link as={Link} to="/memberships" className="zoom link-unstyled">MEMBERSHIPS</Nav.Link>

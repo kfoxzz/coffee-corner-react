@@ -3,7 +3,6 @@ import LoginModal from './modals/LoginModal';
 import { Container, Row, Col, Jumbotron, Image } from 'react-bootstrap';
 import { Animated } from "react-animated-css";
 import CartModal from './modals/CartModal';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 function Header(props) {
 

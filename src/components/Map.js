@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Col } from 'react-bootstrap';
 import { MAP_STYLES } from './store';
@@ -7,13 +7,13 @@ function SimpleMap() {
 
     const MapMarker = ({ text }) => <div><i className="fa fa-coffee fa-3x text-secondary"></i></div>;
 
-    const [mapSettings, setMapSettings ] = useState({
+    const mapSettings = {
         center: {
             lat: 34.13,
             lng: -118.28
         },
         zoom: 8,
-    });
+    }
 
     return (
         // Important! Always set the container height explicitly

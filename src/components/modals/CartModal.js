@@ -47,6 +47,37 @@ function CartModal(props) {
         props.close();
     }
 
+    // function initiateCheckout() {
+    //     const itemData = {
+    //         data: props.cart
+    //     }
+    //     fetch('http://localhost:4242/create-checkout-session', {
+    //         method: 'POST',
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //         }),
+    //         body: JSON.stringify(itemData),
+    //     })
+    // }
+
+    async function initiateCheckout () {
+        const itemData = {
+            data: props.cart,
+        };
+        const res = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/create-checkout-session`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(itemData),
+          }
+        );
+        const body = await res.json();
+        window.location.href = body.url;
+      };
+
     return (
         <Modal show={props.show}>
             <Modal.Header>
@@ -63,7 +94,7 @@ function CartModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button className="green-bg border-0">Check Out</Button>
+                <Button type="submit" className="green-bg border-0" onClick={initiateCheckout}>Check Out</Button>
             </Modal.Footer>
         </Modal>
     )
