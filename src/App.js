@@ -12,32 +12,27 @@ import Memberships from './components/Memberships';
 import Shop from './components/Shop';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-
   const [cart, setCart] = useState([]);
 
-  function updateCart () {
+  function updateCart() {
     let cartArray = [];
     let keys = Object.keys(localStorage);
     for (let key of keys) {
       const quantity = localStorage.getItem(key);
       cartArray.push({
         price: key,
-        quantity: quantity
+        quantity: quantity,
       });
     }
     setCart(cartArray);
   }
 
   useEffect(() => {
-    updateCart()
-  }, [])
+    updateCart();
+  }, []);
 
   return (
     <div className="App d-flex flex-column min-vh-100">
