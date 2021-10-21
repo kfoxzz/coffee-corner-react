@@ -1,12 +1,20 @@
 import React from 'react';
-import { Modal, Container, Col, Row, Button } from 'react-bootstrap';
+import {
+  Modal,
+  Container,
+  Col,
+  Row,
+  Button,
+  Form,
+  InputGroup,
+} from 'react-bootstrap';
 import { ITEMS } from '../store';
 
 function CartModal(props) {
   const priceIds = ITEMS.map(item => item.priceId);
   let cart = [];
 
-  function removeFromCart(priceId) {
+  const removeFromCart = (priceId) => {
     localStorage.removeItem(priceId);
     for (let i = 0; i < cart.length; i++) {
       const itemPrice = cart[i].price;
@@ -17,7 +25,7 @@ function CartModal(props) {
     props.updateCart();
   }
 
-  function renderCartItems() {
+  const renderCartItems = () => {
     for (let i = 0; i < props.cart.length; i++) {
       const cartPriceId = props.cart[i].price;
       const itemIndex = priceIds.indexOf(cartPriceId);
@@ -26,23 +34,27 @@ function CartModal(props) {
     if (!cart.length) {
       return <div>Your cart is empty</div>;
     } else {
-      return cart.map(item => (
-        <div id={item.priceId} key={item.id}>
-          <div>
-            <h4>{item.name}</h4>
-            <h5>{item.price} each</h5>
-            <h5 className="quantity">x {item.quantity}</h5>
-            <button
-              type="submit"
-              onClick={() => {
-                removeFromCart(item.priceId);
-              }}
-              className="btn btn-secondary">
-              Remove
-            </button>
-          </div>
-          <br />
-        </div>
+      return cart.map((item, i) => (
+        <Row id={item.priceId} key={i} className="pb-2">
+          <Col>
+            <p>{item.name}</p>
+          </Col>
+          <Col>
+              <Row className="justify-content-between text-end mx-3">
+                  <p className="mb-2">
+                    {item.quantity} x {item.price}
+                  </p>
+                  {/* <button
+                    type="submit"
+                    onClick={() => {
+                      removeFromCart(item.priceId);
+                    }}
+                    className="btn btn-secondary">
+                    Remove
+                  </button> */}
+              </Row>
+          </Col>
+        </Row>
       ));
     }
   }
@@ -87,6 +99,9 @@ function CartModal(props) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
+        <Button variant="link" >
+          Edit Cart
+        </Button>
         <Button
           type="submit"
           className="green-bg border-0"

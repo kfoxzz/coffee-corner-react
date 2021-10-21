@@ -12,12 +12,13 @@ import Memberships from './components/Memberships';
 import Shop from './components/Shop';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
+import Cart from './components/Cart';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  function updateCart() {
+  const updateCart = () => {
     let cartArray = [];
     let keys = Object.keys(localStorage);
     for (let key of keys) {
@@ -65,6 +66,9 @@ function App() {
             </Route>
             <Route path="/cancel">
               <Cancel />
+            </Route>
+            <Route path="/cart">
+              <Cart cart={cart} updateCart={updateCart} />
             </Route>
             <Route exact path="/">
               <Home />

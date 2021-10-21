@@ -4,17 +4,17 @@ import { SHOPS } from './store';
 import SimpleMap from './Map';
 
 function Locations() {
-  function renderLocations() {
-    return SHOPS.map(shop => (
+  const renderLocations = () => {
+    return SHOPS.map(({city, street, zip, phone}) => (
       <ul className="list-unstyled">
         <li>
-          <h4>{shop.city}</h4>
+          <h4>{city}</h4>
         </li>
-        <li>{shop.street}</li>
+        <li>{street}</li>
         <li>
-          {shop.city}, CA {shop.zip}
+          {city}, CA {zip}
         </li>
-        <li>{shop.phone}</li>
+        <li>{phone}</li>
       </ul>
     ));
   }

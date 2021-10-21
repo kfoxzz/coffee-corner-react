@@ -11,7 +11,7 @@ function SubscribeModal(props) {
       <Modal.Header>
         <Modal.Title>Congratulations!</Modal.Title>
         <button
-          class="btn-close"
+          className="btn-close"
           aria-label="Close"
           onClick={closeModal}></button>
       </Modal.Header>

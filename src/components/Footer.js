@@ -11,7 +11,7 @@ function Footer() {
         <Row>
           <Col>
             <ListGroup variant="flush" className="text-center">
-              <Link className="link-unstyled link-light" to="/home">
+              <Link className="link-unstyled link-light" to="/">
                 Home
               </Link>
               <Link className="link-unstyled link-light" to="/about">

@@ -30,7 +30,7 @@ function LoginModal(props) {
                 <Form.Check type="checkbox" label="Remember me" />
               </Col>
               <Col>
-                <a href="#">Create an account</a>
+                <button className="btn btn-link">Create an account</button>
               </Col>
             </Form.Group>
           </Form>

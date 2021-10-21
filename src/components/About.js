@@ -22,13 +22,13 @@ function About() {
         <Col sm={12} md={{ span: 6, order: 'first' }} gap={5}>
           <p>
             Founded in Orange County in 1996, we set out on a mission to provide
-            quality coffee and food to our hometown.Our goal was to create a
+            quality coffee and food to our hometown. Our goal was to create a
             place that fosters good times and good memories, and a place where
             anyone could go to feel at home, away from home.
           </p>
           <p>
             As we grew and opened up new locations, we could see that we were
-            accomplishing what we sent out to do.We still foster the same
+            accomplishing what we sent out to do. We still foster the same
             principals that we were founded on - genuine coffee, genuine people,
             all the time.
           </p>
