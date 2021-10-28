@@ -1,61 +1,60 @@
 body {
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .jumbotron {
-    color: white;
+  color: white;
 }
 
 h6 {
-    font-style: italic;
+  font-style: italic;
 }
 
 h2 {
-    font-weight: 400;
-    font-family: 'Farro', sans-serif;
+  font-weight: 400;
+  font-family: 'Farro', sans-serif;
 }
 
 header h2 {
-    color: #CADE87;
+  color: #cade87;
 }
 
 .home-btn {
-    font-family: 'Farro', sans-serif;
-    font-size: smaller;
+  font-family: 'Farro', sans-serif;
+  font-size: smaller;
 }
 
 .navbar {
-    font-family: 'Farro', sans-serif;
-    background-color: white;
+  font-family: 'Farro', sans-serif;
+  background-color: white;
 }
 
 .no-underline {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 footer {
-    font-family: 'Raleway', sans-serif;
-    background-image: linear-gradient(white, gray);
-    color: white;
+  font-family: 'Raleway', sans-serif;
+  background-image: linear-gradient(white, gray);
+  color: white;
 }
 
 .menu {
-    font-family: 'Farro', serif;
+  font-family: 'Farro', serif;
 }
 
 .menu .menu-text {
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .card-header {
-    background-color: #CADE87;
-    color: white;
+  background-color: #cade87;
+  color: white;
 }
 
 .card {
   background: rgba(0, 0, 0, 0);
 }
-
 
 #map {
   height: 400px;
@@ -69,42 +68,65 @@ footer {
 }
 
 .zoom:hover {
-  transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(
+    1.05
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .box-shadow {
-    box-shadow: 0 0 10px gray;
+  box-shadow: 0 0 10px gray;
 }
 
 .btn-tan {
-    background-color: #DEB887;
+  background-color: #deb887;
 }
 
 .bg-beige {
-    background-color: #FAF5EE;
+  background-color: #faf5ee;
 }
 
 .product {
-    display: none;
+  display: none;
 }
 
 .green-bg {
-    background-color: #CADE87;
-    color:#333333;
+  background-color: #cade87;
+  color: #333333;
 }
 
 .btn-secondary {
-    background-color: #5a5454;
+  background-color: #5a5454;
 }
 
 .dark-gradient {
-      background: #5a5454; 
-      background: -moz-linear-gradient(to bottom,  #5a5454 0%,#333333 100%); 
-      background: -webkit-linear-gradient(to bottom,  #5a5454 0%,#333333 100%); 
-      background: linear-gradient(to bottom,  #5a5454 0%,#333333 100%);
+  background: #5a5454;
+  background: -moz-linear-gradient(to bottom, #5a5454 0%, #333333 100%);
+  background: -webkit-linear-gradient(to bottom, #5a5454 0%, #333333 100%);
+  background: linear-gradient(to bottom, #5a5454 0%, #333333 100%);
 }
 
-.link-unstyled, .link-unstyled:hover {
-    color: inherit;
-    text-decoration: inherit;
+.link-unstyled,
+.link-unstyled:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: 300ms ease-out;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: 300ms ease-in;
 }
