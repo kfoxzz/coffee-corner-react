@@ -13,17 +13,6 @@ function CartModal(props) {
   const priceIds = ITEMS.map(item => item.priceId);
   let cart = [];
 
-  const removeFromCart = (priceId) => {
-    localStorage.removeItem(priceId);
-    for (let i = 0; i < cart.length; i++) {
-      const itemPrice = cart[i].price;
-      if (itemPrice === priceId) {
-        cart.splice(i, 1);
-      }
-    }
-    props.updateCart();
-  }
-
   const renderCartItems = () => {
     for (let i = 0; i < props.cart.length; i++) {
       const cartPriceId = props.cart[i].price;
@@ -72,8 +61,10 @@ function CartModal(props) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="link" >
-          Edit Cart
+        <Button variant="link">
+          <Link to="/cart" onClick={closeModal}>
+            Edit Cart
+          </Link>
         </Button>
         <Button
           type="submit"

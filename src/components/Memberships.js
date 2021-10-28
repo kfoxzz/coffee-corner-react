@@ -4,8 +4,8 @@ import { MEMBERSHIPS } from './store';
 
 function Memberships() {
   function renderMemberships() {
-    return MEMBERSHIPS.map(membership => (
-      <Col xs={12} md={4} className="my-3">
+    return MEMBERSHIPS.map((membership, i) => (
+      <Col xs={12} md={4} className="my-3" key={i}>
         <Card className="text-center h-100 zoom box-shadow">
           <Card.Header>
             <h3>{membership.name}</h3>
