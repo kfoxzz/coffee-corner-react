@@ -5,10 +5,9 @@ import {
   Col,
   Row,
   Button,
-  Form,
-  InputGroup,
 } from 'react-bootstrap';
 import { ITEMS } from '../store';
+import { Link } from 'react-router-dom';
 
 function CartModal(props) {
   const priceIds = ITEMS.map(item => item.priceId);
@@ -44,14 +43,6 @@ function CartModal(props) {
                   <p className="mb-2">
                     {item.quantity} x {item.price}
                   </p>
-                  {/* <button
-                    type="submit"
-                    onClick={() => {
-                      removeFromCart(item.priceId);
-                    }}
-                    className="btn btn-secondary">
-                    Remove
-                  </button> */}
               </Row>
           </Col>
         </Row>
@@ -61,24 +52,6 @@ function CartModal(props) {
 
   function closeModal() {
     props.close();
-  }
-
-  async function initiateCheckout() {
-    const itemData = {
-      data: props.cart,
-    };
-    const res = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/create-checkout-session`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(itemData),
-      }
-    );
-    const body = await res.json();
-    window.location.href = body.url;
   }
 
   return (
@@ -105,7 +78,7 @@ function CartModal(props) {
         <Button
           type="submit"
           className="green-bg border-0"
-          onClick={initiateCheckout}>
+          onClick={props.initiateCheckout}>
           Check Out
         </Button>
       </Modal.Footer>

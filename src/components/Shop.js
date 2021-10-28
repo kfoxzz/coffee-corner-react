@@ -5,10 +5,6 @@ import Items from './Items';
 
 function Shop(props) {
 
-  const [toast, setToast] = useState(false);
-
-  const toggleToast = () => setToast(!toast);
-
   return (
     <>
       <Container>
@@ -20,7 +16,10 @@ function Shop(props) {
           </Col>
         </Row>
         <Row className="justify-content-around">
-          <Items updateCart={props.updateCart} toggleToast={toggleToast} />
+          <Items
+            updateCart={props.updateCart}
+            addToCart={props.addToCart}
+          />
         </Row>
         <Row className="py-3">
           <Col xs={6} className="text-end align-self-center">
@@ -30,13 +29,14 @@ function Shop(props) {
             <Button
               type="submit"
               id="checkout-button"
-              className="green-bg border-0">
+              className="green-bg border-0"
+              onClick={props.initiateCheckout}>
               Checkout
             </Button>
           </Col>
         </Row>
       </Container>
-      <AddedToCart show={toast} toggleToast={toggleToast} />
+      <AddedToCart show={props.toast} toggleToast={props.toggleToast} />
     </>
   );
 }

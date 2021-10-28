@@ -61,6 +61,7 @@ function Header(props) {
         close={handleCartClose}
         cart={props.cart}
         updateCart={props.updateCart}
+        initiateCheckout={props.initiateCheckout}
       />
     </header>
   );

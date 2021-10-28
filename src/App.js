@@ -17,6 +17,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [toast, setToast] = useState(false);
+
+  const toggleToast = () => setToast(!toast);
 
   const updateCart = () => {
     let cartArray = [];
@@ -31,15 +34,77 @@ function App() {
     setCart(cartArray);
   }
 
+  const removeFromCart = priceId => {
+    localStorage.removeItem(priceId);
+    for (let i = 0; i < cart.length; i++) {
+      const itemPrice = cart[i].price;
+      if (itemPrice === priceId) {
+        cart.splice(i, 1);
+      }
+    }
+    updateCart();
+  };
+
+  const addToStorage = (priceId, quantity) => {
+    window.localStorage.setItem(priceId, quantity);
+  };
+
+  const getFromStorage = priceId => {
+    return window.localStorage.getItem(priceId);
+  };
+
+  const addItemToStorage = (priceId, quantity) => {
+    if (getFromStorage(priceId)) {
+      const newQuantity =
+        parseInt(quantity) + parseInt(getFromStorage(priceId));
+      addToStorage(priceId, newQuantity);
+    } else {
+      addToStorage(priceId, quantity);
+    }
+  };
+
+  const addToCart = (priceId, itemCode) => {
+    const quantity = document.getElementById(itemCode).value;
+    if (quantity === 'Quantity') {
+      alert('Select a quantity to add to cart.');
+    } else {
+      addItemToStorage(priceId, quantity);
+    }
+    updateCart();
+    toggleToast();
+  };
+
   useEffect(() => {
     updateCart();
   }, []);
+
+  async function initiateCheckout() {
+    const itemData = {
+      data: cart,
+    };
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/create-checkout-session`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(itemData),
+      }
+    );
+    const body = await res.json();
+    window.location.href = body.url;
+  }
 
   return (
     <div className="App d-flex flex-column min-vh-100">
       <Router>
         <div className="flex-grow-1">
-          <Header cart={cart} updateCart={updateCart} />
+          <Header
+            cart={cart}
+            updateCart={updateCart}
+            initiateCheckout={initiateCheckout}
+          />
           <Navigation />
 
           <Switch>
@@ -53,7 +118,16 @@ function App() {
               <Memberships />
             </Route>
             <Route path="/shop">
-              <Shop updateCart={updateCart} />
+              <Shop
+                updateCart={updateCart}
+                initiateCheckout={initiateCheckout}
+                addToStorage={addToStorage}
+                getFromStorage={getFromStorage}
+                addItemToStorage={addItemToStorage}
+                addToCart={addToCart}
+                toggleToast={toggleToast}
+                toast={toast}
+              />
             </Route>
             <Route path="/locations">
               <Locations />
@@ -68,7 +142,16 @@ function App() {
               <Cancel />
             </Route>
             <Route path="/cart">
-              <Cart cart={cart} updateCart={updateCart} />
+              <Cart
+                cart={cart}
+                updateCart={updateCart}
+                initiateCheckout={initiateCheckout}
+                removeFromCart={removeFromCart}
+                addToCart={addToCart}
+                addItemToStorage={addItemToStorage}
+                addToStorage={addToStorage}
+                getFromStorage={getFromStorage}
+              />
             </Route>
             <Route exact path="/">
               <Home />

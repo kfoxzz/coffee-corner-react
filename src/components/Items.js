@@ -3,34 +3,6 @@ import { Row, Col, Button, Card } from 'react-bootstrap';
 import { ITEMS } from './store';
 
 function Items(props) {
-  const addToStorage = (priceId, quantity) => {
-    window.localStorage.setItem(priceId, quantity);
-  };
-
-  const getFromStorage = priceId => {
-    return window.localStorage.getItem(priceId);
-  };
-
-  const addItemToStorage = (priceId, quantity) => {
-    if (getFromStorage(priceId)) {
-      const newQuantity =
-        parseInt(quantity) + parseInt(getFromStorage(priceId));
-      addToStorage(priceId, newQuantity);
-    } else {
-      addToStorage(priceId, quantity);
-    }
-  };
-
-  const addToCart = (priceId, itemCode) => {
-    const quantity = document.getElementById(itemCode).value;
-    if (quantity === 'Quantity') {
-      alert('Select a quantity to add to cart.');
-    } else {
-      addItemToStorage(priceId, quantity);
-    }
-    props.updateCart();
-    props.toggleToast();
-  };
 
   return ITEMS.map((item, i) => (
     <Col xs={12} md={6} lg={5} key={i}>
@@ -63,7 +35,7 @@ function Items(props) {
                 href="#"
                 className="border-0 green-bg"
                 onClick={() => {
-                  addToCart(item.priceId, item.itemCode);
+                  props.addToCart(item.priceId, item.itemCode);
                 }}>
                 Add to cart
               </Button>
