@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { ITEMS } from './store';
+import { Fade, Stagger } from 'react-animation-components';
 
 function Cart(props) {
   const priceIds = ITEMS.map(item => item.priceId);
@@ -8,7 +9,6 @@ function Cart(props) {
 
   const changeQuantity = (priceId, currentQuantity, action) => {
     let quantity = currentQuantity;
-    console.log(quantity);
     if (currentQuantity == 1 && action === 'remove') {
       props.removeFromCart(priceId);
       return;
@@ -28,43 +28,57 @@ function Cart(props) {
       cart.push({ ...ITEMS[itemIndex], quantity: props.cart[i].quantity });
     }
     if (!cart.length) {
-      return <div>Your cart is empty</div>;
+      return (
+        <Fade in>
+          <div>Your cart is empty</div>
+        </Fade>
+      );
     } else {
-      return cart.map((item, i) => (
-        <Row id={item.priceId} key={i} className="pb-2 mx-auto">
-          <Col>
-            <p>{item.name}</p>
-          </Col>
-          <Col>
-            <Button
-              style={{ marginLeft: '.5rem' }}
-              className="green-bg border-0"
-              onClick={() => changeQuantity(item.priceId, item.quantity, 'remove')}>
-              -
-            </Button>{' '}
-            {item.quantity}
-            <Button
-              style={{ marginLeft: '.5rem' }}
-              className="green-bg border-0"
-              onClick={() => changeQuantity(item.priceId, item.quantity, 'add')}>
-              +
-            </Button>
-          </Col>
-          <Col>
-            <p className="mb-2">x {item.price}</p>
-          </Col>
-          <Col>
-            <button
-              type="submit"
-              onClick={() => {
-                props.removeFromCart(item.priceId);
-              }}
-              className="btn btn-secondary">
-              Remove
-            </button>
-          </Col>
-        </Row>
-      ));
+      return (
+        <Stagger in>
+          {cart.map((item, i) => (
+            <Fade in>
+              <Row id={item.priceId} key={i} className="pb-2 mx-auto">
+                <Col>
+                  <p>{item.name}</p>
+                </Col>
+                <Col className="text-center">
+                  <Button
+                    style={{ marginLeft: '.5rem' }}
+                    className="green-bg border-0"
+                    onClick={() =>
+                      changeQuantity(item.priceId, item.quantity, 'remove')
+                    }>
+                    -
+                  </Button>{' '}
+                  {item.quantity}
+                  <Button
+                    style={{ marginLeft: '.5rem' }}
+                    className="green-bg border-0"
+                    onClick={() =>
+                      changeQuantity(item.priceId, item.quantity, 'add')
+                    }>
+                    +
+                  </Button>
+                </Col>
+                <Col>
+                  <p className="mb-2">x {item.price}</p>
+                </Col>
+                <Col>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      props.removeFromCart(item.priceId);
+                    }}
+                    className="btn btn-secondary">
+                    Remove
+                  </button>
+                </Col>
+              </Row>
+            </Fade>
+          ))}
+        </Stagger>
+      );
     }
   };
 

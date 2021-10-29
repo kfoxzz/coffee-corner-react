@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginModal from './modals/LoginModal';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import CartModal from './modals/CartModal';
+import { Fade, FadeTransform } from 'react-animation-components';
 
 function Header(props) {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -34,23 +35,31 @@ function Header(props) {
               </a>
             </Col>
             <Col className="align-self-center text-dark py-3">
-              <h2 className="mb-0 text-nowrap">Kristi's Coffee Corner</h2>
-              <h6 className="text-light d-none d-sm-block">
-                A slice of heaven, in your own neighborhood.
-              </h6>
+              <FadeTransform
+                in
+                transformProps={{
+                  exitTransform: 'scale(0.5)',
+                }}>
+                <h2 className="mb-0 text-nowrap">Kristi's Coffee Corner</h2>
+                <h6 className="text-light d-none d-sm-block">
+                  A slice of heaven, in your own neighborhood.
+                </h6>
+              </FadeTransform>
             </Col>
             <Col className="col-auto text-light text-end align-self-center">
-              <button className="btn btn-social" onClick={handleLoginShow}>
-                <i className="fa fa-user-circle fa-2x text-light"></i>
-              </button>
-              <button className="btn btn-social" onClick={handleCartShow}>
-                <i className="fa fa-shopping-cart fa-2x text-light"></i>
-              </button>
-              <div className="d-none d-md-block text-bottom">
-                contact@kristiscoffeecorner.co
-                <br />
-                (555) 234-1029
-              </div>
+              <Fade in>
+                <button className="btn btn-social" onClick={handleLoginShow}>
+                  <i className="fa fa-user-circle fa-2x text-light"></i>
+                </button>
+                <button className="btn btn-social" onClick={handleCartShow}>
+                  <i className="fa fa-shopping-cart fa-2x text-light"></i>
+                </button>
+                <div className="d-none d-md-block text-bottom">
+                  contact@kristiscoffeecorner.co
+                  <br />
+                  (555) 234-1029
+                </div>
+              </Fade>
             </Col>
           </Row>
         </Container>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { MEMBERSHIPS } from './store';
+import { FadeTransform, Fade } from 'react-animation-components';
 
 function Memberships() {
   function renderMemberships() {
@@ -28,12 +29,24 @@ function Memberships() {
   return (
     <Container className="my-3">
       <Row>
-        <Col className="text-center">
-          <h2>Sign up for a membership today and save!</h2>
-          <p>Redeem points for rewards, with no expiration date!</p>
-        </Col>
+        <FadeTransform
+          in
+          transformProps={{
+            exitTransform: 'scale(0.75) translateX(25%)',
+          }}>
+          <Col className="text-center">
+            <h2>Sign up for a membership today and save!</h2>
+            <p>Redeem points for rewards, with no expiration date!</p>
+          </Col>
+        </FadeTransform>
       </Row>
-      <Row className="mb-4 membership">{renderMemberships()}</Row>
+      <FadeTransform
+        in
+        transformProps={{
+          exitTransform: 'scale(0.75) translateY(25%)',
+        }}>
+        <Row className="mb-4 membership">{renderMemberships()}</Row>
+      </FadeTransform>
     </Container>
   );
 }

@@ -2,21 +2,28 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { SHOPS } from './store';
 import SimpleMap from './Map';
+import { Fade, Stagger } from 'react-animation-components';
 
 function Locations() {
   const renderLocations = () => {
-    return SHOPS.map(({city, street, zip, phone}) => (
-      <ul className="list-unstyled">
-        <li>
-          <h4>{city}</h4>
-        </li>
-        <li>{street}</li>
-        <li>
-          {city}, CA {zip}
-        </li>
-        <li>{phone}</li>
-      </ul>
-    ));
+    return (
+      <Stagger in>
+        {SHOPS.map(({ city, street, zip, phone }) => (
+          <Fade in>
+            <ul className="list-unstyled">
+              <li>
+                <h4>{city}</h4>
+              </li>
+              <li>{street}</li>
+              <li>
+                {city}, CA {zip}
+              </li>
+              <li>{phone}</li>
+            </ul>
+          </Fade>
+        ))}
+      </Stagger>
+    );
   }
 
   return (

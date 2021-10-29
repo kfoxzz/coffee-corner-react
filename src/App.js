@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
 import Navigation from './components/Nav';
 import Home from './components/Home';
@@ -14,11 +13,14 @@ import Shop from './components/Shop';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
 import Cart from './components/Cart';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
+
 
 function App() {
   const [cart, setCart] = useState([]);
   const [toast, setToast] = useState(false);
+
+  const location = useLocation();
 
   const toggleToast = () => setToast(!toast);
 
@@ -97,58 +99,58 @@ function App() {
     window.location.href = body.url;
   }
 
-  const routes = [
-    { path: '/about', name: 'About', Component: About, props: {} },
-    { path: '/menu', name: 'Menu', Component: Menu, props: {} },
-    {
-      path: '/memberships',
-      name: 'Memberships',
-      Component: Memberships,
-      props: {},
-    },
-    {
-      path: '/shop',
-      name: 'Shop',
-      Component: Shop,
-      props: {
-        updateCart,
-        initiateCheckout,
-        addToStorage,
-        getFromStorage,
-        addItemToStorage,
-        addToCart,
-        toggleToast,
-        toast,
-      },
-    },
-    { path: '/locations', name: 'Locations', Component: Locations, props: {} },
-    { path: '/contact', name: 'Contact', Component: Contact, props: {} },
-    {
-      path: '/success',
-      name: 'Success',
-      Component: Success,
-      props: {
-        updateCart,
-      },
-    },
-    { path: '/cancel', name: 'Cancel', Component: Cancel, props: {} },
-    {
-      path: '/cart',
-      name: 'Cart',
-      Component: Cart,
-      props: {
-        cart,
-        updateCart,
-        initiateCheckout,
-        removeFromCart,
-        addToCart,
-        addItemToStorage,
-        addToStorage,
-        getFromStorage,
-      },
-    },
-    { path: '/', name: 'Home', Component: Home, props: {} },
-  ];
+  // const routes = [
+  //   { path: '/about', name: 'About', Component: About, props: {} },
+  //   { path: '/menu', name: 'Menu', Component: Menu, props: {} },
+  //   {
+  //     path: '/memberships',
+  //     name: 'Memberships',
+  //     Component: Memberships,
+  //     props: {},
+  //   },
+  //   {
+  //     path: '/shop',
+  //     name: 'Shop',
+  //     Component: Shop,
+  //     props: {
+  //       updateCart,
+  //       initiateCheckout,
+  //       addToStorage,
+  //       getFromStorage,
+  //       addItemToStorage,
+  //       addToCart,
+  //       toggleToast,
+  //       toast,
+  //     },
+  //   },
+  //   { path: '/locations', name: 'Locations', Component: Locations, props: {} },
+  //   { path: '/contact', name: 'Contact', Component: Contact, props: {} },
+  //   {
+  //     path: '/success',
+  //     name: 'Success',
+  //     Component: Success,
+  //     props: {
+  //       updateCart,
+  //     },
+  //   },
+  //   { path: '/cancel', name: 'Cancel', Component: Cancel, props: {} },
+  //   {
+  //     path: '/cart',
+  //     name: 'Cart',
+  //     Component: Cart,
+  //     props: {
+  //       cart,
+  //       updateCart,
+  //       initiateCheckout,
+  //       removeFromCart,
+  //       addToCart,
+  //       addItemToStorage,
+  //       addToStorage,
+  //       getFromStorage,
+  //     },
+  //   },
+  //   { path: '/', name: 'Home', Component: Home, props: {} },
+  // ];
 
   return (
     <div className="App d-flex flex-column min-vh-100">
@@ -173,58 +175,59 @@ function App() {
               </CSSTransition>
             </Route>
           ))} */}
-          <CSSTransition classNames="page" timeout={300}>
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/menu">
-                <Menu />
-              </Route>
-              <Route path="/memberships">
-                <Memberships />
-              </Route>
-              <Route path="/shop">
-                <Shop
-                  updateCart={updateCart}
-                  initiateCheckout={initiateCheckout}
-                  addToStorage={addToStorage}
-                  getFromStorage={getFromStorage}
-                  addItemToStorage={addItemToStorage}
-                  addToCart={addToCart}
-                  toggleToast={toggleToast}
-                  toast={toast}
-                />
-              </Route>
-              <Route path="/locations">
-                <Locations />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/success">
-                <Success updateCart={updateCart} />
-              </Route>
-              <Route path="/cancel">
-                <Cancel />
-              </Route>
-              <Route path="/cart">
-                <Cart
-                  cart={cart}
-                  updateCart={updateCart}
-                  initiateCheckout={initiateCheckout}
-                  removeFromCart={removeFromCart}
-                  addToCart={addToCart}
-                  addItemToStorage={addItemToStorage}
-                  addToStorage={addToStorage}
-                  getFromStorage={getFromStorage}
-                />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </CSSTransition>
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/menu">
+              <Menu />
+            </Route>
+            <Route exact path="/memberships">
+              <Memberships />
+            </Route>
+            <Route exact path="/shop">
+              <Shop
+                updateCart={updateCart}
+                initiateCheckout={initiateCheckout}
+                addToStorage={addToStorage}
+                getFromStorage={getFromStorage}
+                addItemToStorage={addItemToStorage}
+                addToCart={addToCart}
+                toggleToast={toggleToast}
+                toast={toast}
+              />
+            </Route>
+            <Route exact path="/locations">
+              <Locations />
+            </Route>
+            <Route exact path="/contact">
+              <Contact />
+            </Route>
+            <Route exact path="/success">
+              <Success updateCart={updateCart} />
+            </Route>
+            <Route exact path="/cancel">
+              <Cancel />
+            </Route>
+            <Route exact path="/cart">
+              <Cart
+                cart={cart}
+                updateCart={updateCart}
+                initiateCheckout={initiateCheckout}
+                removeFromCart={removeFromCart}
+                addToCart={addToCart}
+                addItemToStorage={addItemToStorage}
+                addToStorage={addToStorage}
+                getFromStorage={getFromStorage}
+              />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="*">
+              <div>Not Found</div>
+            </Route>
+          </Switch>
         </div>
         <Footer />
       </Router>

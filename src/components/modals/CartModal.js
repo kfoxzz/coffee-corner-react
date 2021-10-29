@@ -70,7 +70,7 @@ function CartModal(props) {
           type="submit"
           className="green-bg border-0"
           onClick={props.initiateCheckout}>
-          Check Out
+          Checkout
         </Button>
       </Modal.Footer>
     </Modal>

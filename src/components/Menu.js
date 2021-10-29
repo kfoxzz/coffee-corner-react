@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import MenuItems from './MenuItems';
+import { Fade } from 'react-animation-components';
 
 function Menu() {
 
@@ -26,12 +27,14 @@ function Menu() {
               xs={10}
               md={8}
               lg={6}>
-              <Row className="pt-4">
-                <Col>
-                  <h1>&#9789; Menu &#9790;</h1>
-                </Col>
-              </Row>
-              <hr />
+              <Fade in>
+                <Row className="pt-4">
+                  <Col>
+                    <h1>&#9789; Menu &#9790;</h1>
+                  </Col>
+                  <hr />
+                </Row>
+              </Fade>
               <MenuItems />
               <Row>
                 <Col className="menu-text">
