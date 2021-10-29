@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { ITEMS } from './store';
 import { Fade, Stagger } from 'react-animation-components';
 
@@ -35,49 +35,64 @@ function Cart(props) {
       );
     } else {
       return (
-        <Stagger in>
-          {cart.map((item, i) => (
-            <Fade in>
-              <Row id={item.priceId} key={i} className="pb-2 mx-auto">
-                <Col>
-                  <p>{item.name}</p>
-                </Col>
-                <Col className="text-center">
-                  <Button
-                    style={{ marginLeft: '.5rem' }}
-                    className="green-bg border-0"
-                    onClick={() =>
-                      changeQuantity(item.priceId, item.quantity, 'remove')
-                    }>
-                    -
-                  </Button>{' '}
-                  {item.quantity}
-                  <Button
-                    style={{ marginLeft: '.5rem' }}
-                    className="green-bg border-0"
-                    onClick={() =>
-                      changeQuantity(item.priceId, item.quantity, 'add')
-                    }>
-                    +
-                  </Button>
-                </Col>
-                <Col>
-                  <p className="mb-2">x {item.price}</p>
-                </Col>
-                <Col>
-                  <button
-                    type="submit"
-                    onClick={() => {
-                      props.removeFromCart(item.priceId);
-                    }}
-                    className="btn btn-secondary">
-                    Remove
-                  </button>
-                </Col>
-              </Row>
-            </Fade>
-          ))}
-        </Stagger>
+        <>
+          <Stagger in>
+            {cart.map((item, i) => (
+              <Fade in>
+                <Row id={item.priceId} key={i} className="pb-2 row-cols-md-4">
+                  <Col>
+                    <p>{item.name}</p>
+                  </Col>
+                  <Col className="text-center">
+                    <Button
+                      style={{ marginLeft: '.5rem' }}
+                      variant="outline-dark"
+                      size="sm"
+                      onClick={() =>
+                        changeQuantity(item.priceId, item.quantity, 'remove')
+                      }>
+                      -
+                    </Button>{' '}
+                    {item.quantity}
+                    <Button
+                      style={{ marginLeft: '.5rem' }}
+                      variant="outline-dark"
+                      size="sm"
+                      onClick={() =>
+                        changeQuantity(item.priceId, item.quantity, 'add')
+                      }>
+                      +
+                    </Button>
+                  </Col>
+                  <Col>
+                    <p className="mb-2">x {item.price}</p>
+                  </Col>
+                  <Col md={2}>
+                    <button
+                      type="submit"
+                      onClick={() => {
+                        props.removeFromCart(item.priceId);
+                      }}
+                      className="btn btn-secondary">
+                      Remove
+                    </button>
+                  </Col>
+                </Row>
+              </Fade>
+            ))}
+          </Stagger>
+          <Row>
+            <Col xs={12} sm={4} className="align-self-end">
+              <Button
+                type="submit"
+                id="checkout-button"
+                variant="warning"
+                onClick={props.initiateCheckout}>
+                Checkout
+              </Button>
+            </Col>
+          </Row>
+        </>
       );
     }
   };
@@ -87,8 +102,8 @@ function Cart(props) {
       <Row>
         <Col>
           <h3>Cart</h3>
-          <hr />
         </Col>
+        <hr />
       </Row>
       {renderCartItems()}
     </Container>

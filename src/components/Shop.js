@@ -22,8 +22,6 @@ function Shop(props) {
               We love our house-roasted beans, and we hope you love them too!
             </em>
           </Col>
-          {/* </Row>
-        <Row className="justify-content-end text-center py-2"> */}
           <Col xs={6} sm={3} className="text-center">
             <div>
               <Link to="/cart">View Cart</Link>
