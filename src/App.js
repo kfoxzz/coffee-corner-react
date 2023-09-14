@@ -28,11 +28,13 @@ function App() {
     let cartArray = [];
     let keys = Object.keys(localStorage);
     for (let key of keys) {
-      const quantity = localStorage.getItem(key);
-      cartArray.push({
-        price: key,
-        quantity: quantity,
-      });
+      if (key.startsWith('price_')) {
+        const quantity = localStorage.getItem(key);
+        cartArray.push({
+          price: key,
+          quantity: quantity,
+        });
+      }
     }
     setCart(cartArray);
   };
