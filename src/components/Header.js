@@ -30,7 +30,7 @@ function Header(props) {
         <Container>
           <Row className="py-4">
             <Col className="col-2 col-md-1 align-self-center d-none d-sm-block">
-              <a href="index.html">
+              <a href="/">
                 <Image src="assets/coffee-cup-1.png" fluid />
               </a>
             </Col>
