@@ -2,7 +2,7 @@
 
 ## About
 
-Server repo: https://github.com/kfoxzz/coffee-corner-react-server
+Proxy server: https://github.com/kfoxzz/coffee-corner-react-server  
 Live site: https://kristis-coffee-corner.onrender.com/shop
 
 ## Available Scripts
